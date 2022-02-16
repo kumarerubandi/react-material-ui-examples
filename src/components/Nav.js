@@ -1,24 +1,29 @@
-mport React, { useState } from "react";
+import React, { useState } from "react";
 import { makeStyles , withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import MenuIcon from "@material-ui/icons/Menu";
 import green from "@material-ui/core/colors/green";
 import Menu from '@material-ui/core/Menu';
+import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import Logo from '../assets/logo.png'
 
 
 // react.school/material-ui
 
 const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    fontsize:'1em',
-
-    color:'green'
+  menuItem: {
+    fontSize:'0.8em',
+    margin:'0 1%',
+    color:'#002b49',
+    textTransform: 'capitalize',
+    fontWeight:'bold'
   },
-
+  logo: { 
+    width:100
+  },
   title: {
     
   },
@@ -87,12 +92,19 @@ export default function Nav() {
         }`}
       >
         <Toolbar>
-        
-          <Typography variant="h6" className={classes.title}>
-            logo
-          </Typography>
-          <Button color="#234123" aria-controls="first-menu" aria-haspopup="true" 
-            onClick={handleClick}>
+          <Box
+            
+              component={'img'}
+              alt="Logo"
+              src={Logo}
+              className={classes.logo}
+          />
+          <Button className={classes.menuItem} color="#234123" 
+          aria-controls="first-menu" 
+          aria-haspopup="true" 
+            onClick={handleClick}
+            endIcon={<KeyboardArrowDownIcon />}
+          >
             Main 1
           </Button>
            <StyledMenu
@@ -114,19 +126,17 @@ export default function Nav() {
           </StyledMenu>
 
 
-          <Button>
+          <Button className={classes.menuItem}>
             Main 2
           </Button>
-          <Button>
-            Main 3
+          <Button className={classes.menuItem}>
+           Main 3
           </Button>
   
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <Typography>
-       Test...
-      </Typography>
+   
     </React.Fragment>
   );
 }
