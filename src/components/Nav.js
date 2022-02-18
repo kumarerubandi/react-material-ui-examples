@@ -6,9 +6,14 @@ import Button from "@material-ui/core/Button";
 import green from "@material-ui/core/colors/green";
 import Menu from '@material-ui/core/Menu';
 import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Logo from '../assets/logo.png'
+import DeleteIcon from '@material-ui/icons/Delete';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import SearchIcon from '@material-ui/icons/Search';
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 
 
 // react.school/material-ui
@@ -34,6 +39,14 @@ const useStyles = makeStyles((theme) => ({
   customHeight: {
     minHeight: 200
   },
+  iconTray:{
+    display: 'flex',
+    width: '100%',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+
+  },
+
   offset: theme.mixins.toolbar
 }));
 
@@ -91,15 +104,14 @@ export default function Nav() {
           isCustomHeight && classes.customHeight
         }`}
       >
-        <Toolbar>
+      <Toolbar>
           <Box
-            
               component={'img'}
               alt="Logo"
               src={Logo}
               className={classes.logo}
           />
-          <Button className={classes.menuItem} color="#234123" 
+          <Button className={classes.menuItem}  
           aria-controls="first-menu" 
           aria-haspopup="true" 
             onClick={handleClick}
@@ -132,7 +144,20 @@ export default function Nav() {
           <Button className={classes.menuItem}>
            Main 3
           </Button>
-  
+        
+          
+       
+          <div className={classes.iconTray}>
+            <IconButton aria-label="delete">
+              <SearchIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <NotificationsNoneOutlinedIcon />
+            </IconButton>
+            <IconButton aria-label="delete">
+              <AccountCircleOutlinedIcon />
+            </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
       <Toolbar />

@@ -10,15 +10,22 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { DataGrid } from '@material-ui/data-grid'
-        
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
+const linkStyle = {
+    color:"#00A6A0",
+  }
 const useStyles = makeStyles((theme) => ({
     right: {
-      marginLeft: 'auto'
+    marginLeft: 'auto',
+    display: 'flex',
+    width: '100%',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+      
     },
-    container:{
-       padding:'1% 0'
-    },
+    
     heading:{
         background: 'blue',
         fontWeight: 'bold',
@@ -39,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
     },
     tableContainer:{
        margin:'1% 0' 
-    }
+    },
+    links:linkStyle,
 }));
 
 
@@ -49,7 +57,7 @@ const columns = [
     renderCell: (params) => (
         <strong>
           
-          <Link color="inherit" href="/">
+          <Link color="inherit" href="/" style={linkStyle}>
             {params.value}
           </Link>
         </strong>
@@ -109,19 +117,21 @@ export default function Main() {
                 </Link>
                 <Typography color="textPrimary">Main Page</Typography>
             </Breadcrumbs>
-            {/* <Grid spacing={3} container alignItems="center">
-                <Grid >
-                    <Link color="inherit" href="/">
+            <Grid spacing={2} container alignItems="center">
+                <Grid item xs={1}>
+                    <Link color="inherit" href="/" className={classes.links}>
                        Items 
                     </Link> 
-                    <Link color="inherit" href="/">
+                </Grid>
+                <Grid item xs={1}>
+                    <Link color="inherit" href="/" className={classes.links}>
                        Items 2
                     </Link>
                 </Grid>
-                <Grid className={classes.right}>
+                <Grid item xs={2} className={classes.right}>
                     <Button  color="primary">Create New</Button>
                 </Grid>
-            </Grid>  */}
+            </Grid> 
             <Box className={classes.dataBlock} >
                 <Typography className={classes.heading} variant="h6">Find</Typography>
                 <Box className={classes.boxContent}>
@@ -155,7 +165,6 @@ export default function Main() {
                     <DataGrid
                         rows={rows}
                         columns={columns}
-                       size="small"
                     />
                 </div>
                 
